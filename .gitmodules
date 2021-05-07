@@ -10,3 +10,6 @@
 [submodule "LuaJIT-GLFW"]
 	path = LuaJIT-GLFW
 	url = https://github.com/sonoro1234/LuaJIT-GLFW.git
+[submodule "freetype"]
+	path = freetype
+	url = https://gitlab.freedesktop.org/freetype/freetype.git

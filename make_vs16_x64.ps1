@@ -1,9 +1,10 @@
-git submodule update --init --recursive
+# git submodule update --init --recursive
 
 $ROOT = (Get-Location).Path.Replace("\", "/")
-$SDL_PATH = "$ROOT/RELEASE_x64/sdl"
-$GLFW_PATH = "$ROOT/RELEASE_x64/glfw"
-$LUAJIT_PATH = "$ROOT/RELEASE_x64/luajit"
+$SDL_PATH = "$ROOT/ARTIFACTS_x64/sdl"
+$GLFW_PATH = "$ROOT/ARTIFACTS_x64/glfw"
+$FREETYPE_PATH = "$ROOT/ARTIFACTS_x64/freetype"
+$LUAJIT_PATH = "$ROOT/ARTIFACTS_x64/luajit"
 
 mkdir $LUAJIT_PATH -Force | Out-Null
 
@@ -21,5 +22,8 @@ cmake -G "Visual Studio 16 2019" -A "x64" -S "./LuaJIT-GLFW" -B "./BUILD/glfw" -
 cmake --build "BUILD/glfw" --target INSTALL --config Release
 cmake --build "BUILD/glfw" --target GLFW/INSTALL --config Release
 
-cmake -G "Visual Studio 16 2019" -A "x64" -S "./LuaJIT-ImGui" -B "./BUILD/imgui" -D GLFW_PATH=$GLFW_PATH -D SDL_PATH=$SDL_PATH -D LUAJIT_BIN=$LUAJIT_PATH
+cmake -G "Visual Studio 16 2019" -A "x64" -S "./freetype" -B "./BUILD/freetype" -D CMAKE_INSTALL_PREFIX:PATH=$FREETYPE_PATH
+cmake --build "BUILD/freetype" --target INSTALL --config Release
+
+cmake -G "Visual Studio 16 2019" -A "x64" -S "./LuaJIT-ImGui" -B "./BUILD/imgui" -D IMGUI_FREETYPE=ON -D FREETYPE_PATH=$FREETYPE_PATH -D GLFW_PATH=$GLFW_PATH -D SDL_PATH=$SDL_PATH -D LUAJIT_BIN=$LUAJIT_PATH
 cmake --build "BUILD/imgui" --target INSTALL --config Release
