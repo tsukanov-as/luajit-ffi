@@ -13,3 +13,9 @@
 [submodule "freetype"]
 	path = freetype
 	url = https://gitlab.freedesktop.org/freetype/freetype.git
+[submodule "love/megasource"]
+	path = love/megasource
+	url = https://github.com/love2d/megasource.git
+[submodule "love/love"]
+	path = love/love
+	url = https://github.com/love2d/love.git

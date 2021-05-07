@@ -1,4 +1,8 @@
-# git submodule update --init --recursive
+git submodule update --init --recursive freetype
+git submodule update --init --recursive LuaJIT
+git submodule update --init --recursive LuaJIT-GLFW
+git submodule update --init --recursive LuaJIT-ImGui
+git submodule update --init --recursive SDL
 
 $ROOT = (Get-Location).Path.Replace("\", "/")
 $SDL_PATH = "$ROOT/ARTIFACTS_x64/sdl"
