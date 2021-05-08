@@ -19,3 +19,6 @@
 [submodule "love/love"]
 	path = love/love
 	url = https://github.com/love2d/love.git
+[submodule "luafilesystem"]
+	path = luafilesystem
+	url = https://github.com/sonoro1234/luafilesystem.git

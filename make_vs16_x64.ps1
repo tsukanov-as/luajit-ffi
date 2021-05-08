@@ -15,6 +15,8 @@ mkdir $LUAJIT_PATH -Force | Out-Null
 cmd /c '"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat" && cd .\LuaJIT\src && msvcbuild.bat'
 cp ./LuaJIT/src/luajit.exe, ./LuaJIT/src/lua51.dll $LUAJIT_PATH
 
+cp "./luafilesystem/lfs.lua", "./luafilesystem/lfs_ffi.lua" $LUAJIT_PATH/lua
+
 cmake -G "Visual Studio 16 2019" -A "x64" -S "./SDL" -B "./BUILD/sdl" -D CMAKE_INSTALL_PREFIX:PATH=$SDL_PATH
 cmake --build "BUILD/sdl" --target INSTALL --config Release
 cp "$SDL_PATH/bin/SDL2.dll" $LUAJIT_PATH
